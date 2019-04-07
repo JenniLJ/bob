@@ -15,8 +15,13 @@ arr.push(f);
 let g = new Audio('g.wav');
 arr.push(g);
 
-function fun() {
+async function fun() {
 	for (let i = 0; i < arr.length; i++) {
 		arr[i].play();
+		await sleep(arr[i].duration * 1000);
 	}
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
